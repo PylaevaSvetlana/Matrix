@@ -47,7 +47,7 @@ namespace miit::algebra
 	{
 		if (rows < 0 || columns < 0)
 		{
-			throw std::out_of_range("Ìàòðèöà íå ñóùåñòâóåò");
+			throw std::out_of_range("ÐœÐ°Ñ‚Ñ€Ð¸Ñ†Ð° Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚");
 		}
 		this->rows = rows;
 		this->columns = columns;
@@ -89,7 +89,7 @@ namespace miit::algebra
 	{
 		if (index >= rows || index<0) 
 		{
-			throw std::out_of_range("Âûõîä çà ãðàíèöû äîïóñòèìûõ çíà÷åíèé");
+			throw std::out_of_range("Ð’Ñ‹Ñ…Ð¾Ð´ Ð·Ð° Ð³Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ñ… Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹");
 		}
 		return matrix[index];
 	}
@@ -99,7 +99,7 @@ namespace miit::algebra
 	{
 		if (index >= rows || index < 0)
 		{
-			throw std::out_of_range("Âûõîä çà ãðàíèöû äîïóñòèìûõ çíà÷åíèé");
+			throw std::out_of_range("Ð’Ñ‹Ñ…Ð¾Ð´ Ð·Ð° Ð³Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ñ… Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹");
 		}
 		return matrix[index];
 	}
