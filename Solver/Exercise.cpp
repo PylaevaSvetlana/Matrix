@@ -2,31 +2,40 @@
 
 using namespace miit::algebra;
 
-miit::algebra::Exercise::Exercise(Matrix<int> matrix): matrix{ matrix } {}
+miit::algebra::Exercise::Exercise(int rows, int columns, Generator& generator) :VirtualExercise{ rows,columns ,generator } {}
 
-Matrix<int> miit::algebra::Exercise::task1()
+void miit::algebra::Exercise::task1()
 {
-	Matrix<int> temp(matrix);
-	int max = temp[0][0];
-	for (int i = 0; i < temp.GetRows(); i++)
+	int max = matrix[0][0];
+	for (size_t i = 0; i < matrix.GetRows(); i++)
 	{
-		for (int j = 0; j < temp.GetColumns(); j++)
+		for (size_t j = 0; j < matrix.GetColumns(); j++)
 		{
-			if (fabs(max) < fabs(temp[i][j]))
+			if (fabs(max) < fabs(matrix[i][j]))
 			{
-				max = temp[i][j];
+				max = matrix[i][j];
 			}
 		}
 	}
-	for (int i = 0; i < temp.GetRows(); i++)
+	for (size_t i = 0; i < matrix.GetRows(); i++)
 	{
-		for (int j = 0; j < temp.GetColumns(); j++)
+		for (size_t j = 0; j < matrix.GetColumns(); j++)
 		{
 			if ((i + j) % 2 == 0)
 			{
-				temp[i][j] = max;
+				matrix[i][j] = max;
 			}
 		}
 	}
-	return temp;
+}
+
+void miit::algebra::Exercise::task2() 
+{
+	for (size_t j = 0; j < matrix.GetColumns(); j++)
+	{
+		if ((matrix[0][j]) % 2 == 0)
+		{
+			matrix.DeleteColumn(j);
+		}
+	}
 }

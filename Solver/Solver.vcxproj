@@ -133,6 +133,7 @@
     <ClInclude Include="IStreamGenerator.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="RandomGenerator.h" />
+    <ClInclude Include="VirtualExercise.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Exercise.cpp" />
@@ -140,6 +141,7 @@
     <ClCompile Include="IStreamGenerator.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="RandomGenerator.cpp" />
+    <ClCompile Include="VirtualExercise.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

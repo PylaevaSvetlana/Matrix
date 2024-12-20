@@ -17,22 +17,23 @@ namespace miit::algebra
 	{
 	private:
 		std::vector<std::vector<T>> matrix;
-		int rows;
-		int columns;
+		size_t rows;
+		size_t columns;
 	public:
 		Matrix(int rows, int columns);
+		Matrix() = default;
 		~Matrix() = default;
 		Matrix(const Matrix& other);
 		Matrix(Matrix&& other) noexcept;
 		Matrix& operator=(const Matrix& other);
 		Matrix& operator=(Matrix&& other) noexcept;
-		std::vector<T> operator[](int index);
-		const std::vector<T> operator[](int index) const;
+		std::vector<T>& operator[](int index);
+		const std::vector<T>& operator[](int index) const;
 		int GetRows();
 		int GetColumns();
 		std::string ToString() const;
-		void FillRandom(int min, int max);
-		void FillIStream(std::istream& in);
+		void Fill(Generator& generator);
+		void DeleteColumn(int delete_column);
 	};
 
 	template<typename T>
@@ -85,7 +86,7 @@ namespace miit::algebra
 	}
 
 	template<typename T>
-	std::vector<T> Matrix<T>::operator[](int index)
+	std::vector<T>& Matrix<T>::operator[](int index)
 	{
 		if (index >= rows || index<0) 
 		{
@@ -95,7 +96,7 @@ namespace miit::algebra
 	}
 
 	template<typename T>
-	const std::vector<T> Matrix<T>::operator[](int index) const
+	const std::vector<T>& Matrix<T>::operator[](int index) const
 	{
 		if (index >= rows || index < 0)
 		{
@@ -120,9 +121,9 @@ namespace miit::algebra
 	inline std::string Matrix<T>::ToString() const
 	{
 		std::stringstream buffer{};
-		for (int i = 0; i < rows; i++)
+		for (size_t i = 0; i < rows; i++)
 		{
-			for (int j = 0; j < columns; j++)
+			for (size_t j = 0; j < columns; j++)
 			{
 				buffer << matrix[i][j] << " ";
 			}
@@ -132,28 +133,28 @@ namespace miit::algebra
 	}
 
 	template<typename T>
-	void Matrix<T>::FillRandom(int min, int max)
+	void Matrix<T>::Fill(Generator& generator)
 	{
-		RandomGenerator generator(min, max);
-		for (int i = 0; i < rows; i++)
+		for (size_t i = 0; i < rows; i++)
 		{
-			for (int j = 0; j < columns; j++)
+			for (size_t j = 0; j < columns; j++)
 			{
 				matrix[i][j] = generator.generate();
 			}
 		}
 	}
-	
+
 	template<typename T>
-	void Matrix<T>::FillIStream(std::istream& in)
+	void Matrix<T>::DeleteColumn(int delete_column)
 	{
-		IStreamGenerator generator(in);
-		for (int i = 0; i < rows; i++)
+		if (delete_column < 0 || delete_column >= columns)
 		{
-			for (int j = 0; j < columns; j++)
-			{
-				matrix[i][j] = generator.generate();
-			}
+			throw std::out_of_range("Выход за границы допустимых значений");
 		}
+		for (size_tsize_t i = 0; i < rows; ++i)
+		{
+			matrix[i].erase(matrix[i].begin() + delete_column);
+		}
+		--columns;
 	}
 }
