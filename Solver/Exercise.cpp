@@ -2,7 +2,7 @@
 
 using namespace miit::algebra;
 
-miit::algebra::Exercise::Exercise(int rows, int columns, Generator& generator) :VirtualExercise{ rows,columns ,generator } {}
+miit::algebra::Exercise::Exercise(size_t rows, size_t columns, Generator& generator):VirtualExercise{ rows,columns ,generator } {}
 
 void miit::algebra::Exercise::task1()
 {

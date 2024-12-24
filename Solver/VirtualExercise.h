@@ -15,9 +15,10 @@ namespace miit::algebra
 
 	public:
 
-		explicit VirtualExercise(int rows, int columns, Generator& generator);
+		explicit VirtualExercise(size_t rows, size_t columns, Generator& generator);
 		virtual ~VirtualExercise() = default;
 		void TaskOutput();
+		Matrix<int> GetMatrix();
 	};
 }
 
