@@ -10,5 +10,5 @@ namespace miit::algebra
 		Exercise(size_t rows, size_t columns, Generator& generator);
 		void task1() override;
 		void task2() override;
-			};
+	};
 }

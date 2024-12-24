@@ -120,7 +120,7 @@ namespace miit::algebra
 	template<typename T>
 	void Matrix<T>::DeleteColumn(size_t delete_column)
 	{
-		if (delete_column < 0 || delete_column >= columns)
+		if (delete_column >= columns)
 		{
 			throw std::out_of_range("Выход за границы допустимых значений");
 		}

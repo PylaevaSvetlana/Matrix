@@ -31,11 +31,11 @@ void miit::algebra::Exercise::task1()
 
 void miit::algebra::Exercise::task2() 
 {
-	for (size_t j = 0; j < matrix.GetColumns(); j++)
+	for (size_t j = matrix.GetColumns(); j > 0; --j)
 	{
-		if ((matrix[0][j]) % 2 == 0)
+		if ((matrix[0][j-1]) % 2 == 0)
 		{
-			matrix.DeleteColumn(j);
+			matrix.DeleteColumn(j-1);
 		}
 	}
 }
