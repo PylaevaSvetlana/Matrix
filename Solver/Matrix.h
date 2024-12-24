@@ -9,31 +9,97 @@
 namespace miit::algebra
 {
 	template<typename T> class Matrix;
-
+	/*
+	* @brief Оператор "<<" для класса Matrix.
+	*/
 	template<typename T>
 	std::ostream& operator<<(std::ostream& output, const Matrix<T>& matrix);
-
+	/*
+	* @brief Класс Matrix.
+	*/
 	template<typename T>
 	class Matrix
 	{
 	private:
+		/*
+        * @brief Вектор Матрица.
+	    */
 		std::vector<std::vector<T>> matrix;
+		/*
+	    * @brief Строки.
+	    */
 		size_t rows;
+		/*
+		* @brief Столбцы.
+		*/
 		size_t columns;
 	public:
+		/**
+		* @brief Конструктор.
+		* @param rows количество строк.
+		* @param cols количество столбцов.
+		*/
 		Matrix(size_t rows, size_t columns);
+		/*
+	    * @brief Консртуктор.
+	    */
 		Matrix() = default;
+		/*
+		* @brief Десртуктор.
+		*/
 		~Matrix() = default;
+		/*
+        * @brief Оператор копирования.
+        */
 		Matrix(const Matrix& other) = default;
+		/*
+		* @brief Оператор перемещения.
+		*/
 		Matrix(Matrix&& other) noexcept = default;
+		/*
+		* @brief Оператор присваивания копированием.
+		*/
 		Matrix& operator=(const Matrix& other) = default;
+		/*
+		* @brief Оператор присваивания перемещением.
+		*/
 		Matrix& operator=(Matrix&& other) noexcept = default;
+		/*
+		* @brief Оператор доступа к строке.
+		* @param index индекс строки.
+		* @return Ссылку на вектор строки матрицы.
+		*/
 		std::vector<T>& operator[](size_t index);
+		/*
+		* @brief Оператор доступа к строке.
+		* @param index индекс строки
+		* @return Ссылку на вектор строки матрицы.
+		*/
 		const std::vector<T>& operator[](size_t index) const;
+		/*
+		* @brief Метод получения колличества строк.
+		* @return Колличество строк матрицы.
+		*/
 		size_t GetRows();
+		/*
+		* @brief Метод получения колличества столбцов.
+		* @return Колличество столбцов матрицы.
+		*/
 		size_t GetColumns();
+		/*
+		* @brief Метод сериализации в строку ToString().
+		* @return Возвращает строковое представление матрицы.
+		*/
 		std::string ToString() const;
+		/*
+		* @brief Метод заполения матрицы значениями.
+		* @param generator генератор.
+		*/
 		void Fill(Generator& generator);
+		/*
+		* @brief Метод удаления столбца матрицы.
+		* @param delete_column столбец, который нужно удалить.
+		*/
 		void DeleteColumn(size_t delete_column);
 	};
 
